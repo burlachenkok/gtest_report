@@ -1,0 +1,37 @@
+body {
+    background-color:#D0D0D0;
+}
+h1 {
+    color: navy;
+    margin-left: 20px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th,td {
+    padding: 5px;
+    text-align: left;
+}
+td {
+   background-color:#FFFFFF;
+}
+.run {
+    background-color: rgb(26,255,26);
+}
+.failed {
+   background-color:rgb(255,26,26);
+}
+.notrun {
+   background-color:rgb(255,255,0);
+}
+.up {
+   background-color:#CCFFFF;
+}
+.down {
+   background-color:#66CCFF;
+}
+table th	{
+    background-color: #66CCFF;
+    color: white;
+/*    width:80%;*/
+}

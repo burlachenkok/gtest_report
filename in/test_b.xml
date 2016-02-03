@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="83" failures="0" disabled="1" errors="0" timestamp="2016-01-26T01:22:46" time="19.415" name="AllTests">
+  <testsuite name="MainSimpleTest" tests="1" failures="0" disabled="1" errors="0" time="0">
+    <testcase name="DISABLED_TestDisabledTest" status="notrun" time="0" classname="MainSimpleTest" />
+  </testsuite>
+  <testsuite name="SomeUtils" tests="2" failures="0" disabled="0" errors="0" time="14.0">
+    <testcase name="CompressorTest" status="run" time="1.5" classname="Utils" />
+    <testcase name="RandomGeneratorTest" status="run" time="5.0" classname="Utils" />
+    <testcase name="SortersTest" status="run" time="7.5" classname="Utils" />
+  </testsuite>
+</testsuites>
