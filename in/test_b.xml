@@ -3,9 +3,10 @@
   <testsuite name="MainSimpleTest" tests="1" failures="0" disabled="1" errors="0" time="0">
     <testcase name="DISABLED_TestDisabledTest" status="notrun" time="0" classname="MainSimpleTest" />
   </testsuite>
-  <testsuite name="SomeUtils" tests="2" failures="0" disabled="0" errors="0" time="14.0">
+  <testsuite name="SomeUtils" tests="2" failures="0" disabled="0" errors="0" time="16.0">
     <testcase name="CompressorTest" status="run" time="1.5" classname="Utils" />
     <testcase name="RandomGeneratorTest" status="run" time="5.0" classname="Utils" />
     <testcase name="SortersTest" status="run" time="7.5" classname="Utils" />
+    <testcase name="NewTestForSomething" status="run" time="2" classname="Utils" />
   </testsuite>
 </testsuites>
