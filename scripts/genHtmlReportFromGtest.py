@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # Copyright (c) 2016, Konstantin Burlachenko (burlachenkok@gmail.com).  All rights reserved.
 # Part of gtest_report
@@ -18,14 +18,16 @@ htmlDocumentText =  '''<!DOCTYPE html>
 <html>
 <head>
 <title>Html report from GTest</title>
-
-<table>
-{report}
-</table>
-
 <link rel="stylesheet" type="text/css" href="gtest_report.css">
 </head>
 <body>
+
+<table class="aggregate_report">
+{report}
+</table>
+
+<br/>
+
 <table class="utests">
 {tableHeader}
 {rows}
@@ -83,7 +85,7 @@ def process(outFname, files):
             timeStamp = xmlFile.getElementsByTagName("testsuites")[0].attributes["timestamp"].value
 
         report += generateElements([(files[f], len(ctr[f]), failures, totalTime, timeStamp)], True)
-        tableHeader += '''<th>Duratin time in sec<br/>%s</th>''' % (fileBaseName)
+        tableHeader += '''<th>Execution time in sec<br/>%s</th>''' % (fileBaseName)
         tableHeader += '''<th>Status<br/>%s</th>''' % (fileBaseName)
     
     tableHeader = "<tr>" + tableHeader + "</tr>"
