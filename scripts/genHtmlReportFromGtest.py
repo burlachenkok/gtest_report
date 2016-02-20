@@ -65,8 +65,8 @@ def process(outFname, files):
             for k,v in (node.attributes.items()):
                 if k == "name" or k == "status" or k == "time" or k == "classname":
                     continue
-                 appendMsg = str(k) + ":" + str(v) + "\n"
-                 extra_content += appendMsg
+                appendMsg = str(k) + ":" + str(v) + "\n"
+                extra_content += appendMsg
 
             #name, time, status
             test = ["", 0.0, None]
