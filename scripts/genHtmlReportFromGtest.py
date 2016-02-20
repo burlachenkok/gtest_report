@@ -19,6 +19,8 @@ htmlDocumentText =  '''<!DOCTYPE html>
 <head>
 <title>Html report from GTest</title>
 <link rel="stylesheet" type="text/css" href="gtest_report.css">
+<script src="extraScript.js"></script>
+
 </head>
 <body>
 
@@ -59,12 +61,24 @@ def process(outFname, files):
         fileBaseName = os.path.basename(files[f])
 
         for node in xmlFile.getElementsByTagName("testcase"):
+            extra_content = ""
+            for k,v in (node.attributes.items()):
+                if k == "name" or k == "status" or k == "time" or k == "classname":
+                    continue
+                 appendMsg = str(k) + ":" + str(v) + "\n"
+                 extra_content += appendMsg
+
             #name, time, status
             test = ["", 0.0, None]
             test[0] = str(node.attributes["classname"].value) + "." + str(node.attributes["name"].value)
             test[1] = float(node.attributes["time"].value)
             test[2] = Empty()
             test[2].value = str(node.attributes["status"].value)
+
+            testReportPairId = test[0] + "_file_" + str(f)
+            testReportPairId = testReportPairId.replace(".", "_")
+            detailsId = testReportPairId + "details"
+
             if test[2].value == "notrun":
                 test[2].value = disableWarningText
                 test[2].cssClass = "notrun"
@@ -74,6 +88,12 @@ def process(outFname, files):
             else:
                 test[2].value = notOkIconText
                 test[2].cssClass = "failed"
+
+            if (extra_content):     
+                extra_content = "<pre>" + extra_content + "</pre>"
+                test[2].value += '''<input type="image" src="more_button.png" style="float: right;"  height="30" onclick="ShowDiv('{htmlId}')"></input>'''.format(htmlId = detailsId);
+                test[2].value += '''<div id="{htmlId}" style="display:none;">{extra_content}</div>'''.format(htmlId = detailsId, extra_content = extra_content)
+
             #append 'row'
             ctr[f][test[0]] = test
 
@@ -85,8 +105,8 @@ def process(outFname, files):
             timeStamp = xmlFile.getElementsByTagName("testsuites")[0].attributes["timestamp"].value
 
         report += generateElements([(files[f], len(ctr[f]), failures, totalTime, timeStamp)], True)
-        tableHeader += '''<th>Execution time in sec<br/>%s</th>''' % (fileBaseName)
-        tableHeader += '''<th>Status<br/>%s</th>''' % (fileBaseName)
+        tableHeader += '''<th>Execution in sec<br/>%s</th>''' % (fileBaseName)
+        tableHeader += '''<th>Status and other info<br/>%s</th>''' % (fileBaseName)
     
     tableHeader = "<tr>" + tableHeader + "</tr>"
 
