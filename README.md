@@ -8,4 +8,6 @@ Clone it and use "generate.(sh|bat)" as startup script. Script was tested with x
 * If you give >2 google test xml report then it highlight min and max execution time per test
 * If you append custom things into your xml gtest output via "::testing::Test::RecordProperty(key, value);" then this custom fields can be observed in generated report
 
+Screenshot of html report is "screenshot_of_html_report.png"
+
 // Copyright (c) 2016, Konstantin Burlachenko (burlachenkok@gmail.com).  All rights reserved.
